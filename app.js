@@ -9,7 +9,7 @@ const options = {
         'user-agent': 'nodejs'
     }
 }
-
+// read data
 let request = https.request(options, (res) => {
     // console.log('Got res: ', res.statusCode)
     let body = ''
@@ -17,9 +17,12 @@ let request = https.request(options, (res) => {
         body = body + data
     })
     res.on('end', () => {
-        console.log(body)
+        // console.log(body)
+        let profile = JSON.parse(body)
+        console.log(profile)
     })
 })
+
 
 request.end()
 

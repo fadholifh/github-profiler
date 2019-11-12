@@ -11,7 +11,14 @@ const options = {
 }
 
 let request = https.request(options, (res) => {
-    console.log('Got res: ', res.statusCode)
+    // console.log('Got res: ', res.statusCode)
+    let body = ''
+    res.on('data', (data) => {
+        body = body + data
+    })
+    res.on('end', () => {
+        console.log(body)
+    })
 })
 
 request.end()
